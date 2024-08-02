@@ -73,7 +73,7 @@ public sealed class PlayerMovement : Component
 			{ "Forward", PlayerRotation.Forward },
 			{ "Right", PlayerRotation.Right },
 			{ "Left", PlayerRotation.Left },
-			{ "Backward", PlayerRotation.Backward },
+			{ "Backward", PlayerRotation.Backward }
 		};
 
 		// Check if any of the input directions are pressed and update WishVelocity
