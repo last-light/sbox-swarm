@@ -1,6 +1,7 @@
 using System.Numerics;
 using Sandbox;
 using Sandbox.Citizen;
+using Sandbox.UI;
 
 public sealed class PlayerMovement : Component
 {
@@ -36,6 +37,7 @@ public sealed class PlayerMovement : Component
 	{
 		IsCrouching = Input.Down("Duck");
 		IsSprinting = Input.Down("Run");
+		if(Input.Pressed("Jump")) Jump();
 	}
 
 	// Call on every physics update instead of scene update
@@ -43,6 +45,13 @@ public sealed class PlayerMovement : Component
 	{
 		BuildWishVelocity();
 		Move();
+	}
+
+	void Jump()
+	{ 	// Check if player is on Ground
+		if (!characterController.IsOnGround) return;
+		// Jump by punching our velocity that we have set earlier
+		characterController.Punch(Vector3.Up * JumpForce);
 	}
 
 	void BuildWishVelocity()
@@ -61,7 +70,7 @@ public sealed class PlayerMovement : Component
 			{ "Forward", PlayerRotation.Forward },
 			{ "Right", PlayerRotation.Right },
 			{ "Left", PlayerRotation.Left },
-			{ "Backward", PlayerRotation.Backward }
+			{ "Backward", PlayerRotation.Backward },
 		};
 
 		// Check if any of the input directions are pressed and update WishVelocity
@@ -99,7 +108,7 @@ public sealed class PlayerMovement : Component
 		else
 		{
 			// Apply air control / gravity
-			// We add a 0.5 constant be cause we perform the other 0.5 at the end of the movement for accuracy
+			// We add a 0.5 constant because we perform the other 0.5 at the end of the movement for accuracy
 			characterController.Velocity += gravity * Time.Delta * 0.5f;
 			characterController.Accelerate(WishVelocity.ClampLength(MaxForce));
 			characterController.ApplyFriction(AirControl);
