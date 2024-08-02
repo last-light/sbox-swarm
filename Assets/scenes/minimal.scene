@@ -33,7 +33,7 @@
           "Flags": 0,
           "Name": "Plane",
           "Position": "0,0,0",
-          "Scale": "5,5,5",
+          "Scale": "13.8,16.9,5",
           "Enabled": true,
           "Components": [
             {
@@ -176,10 +176,210 @@
           ]
         },
         {
+          "__guid": "938853db-d486-422b-b7b6-547cd8871068",
+          "Flags": 0,
+          "Name": "FatCube (4)",
+          "Position": "305.6254,283.6318,126.6074",
+          "Rotation": "0.00000001786504,-0.000000003440268,0.1196542,0.9928156",
+          "Scale": "1.563289,1.363289,0.5632889",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "baead1a0-aad5-4680-a662-b90fc83fb0d4",
+              "BodyGroups": 18446744073709551615,
+              "MaterialOverride": "materials/default.vmat",
+              "Model": "models/dev/box.vmdl",
+              "RenderType": "On",
+              "Tint": "1,0,0.93333,1"
+            },
+            {
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "a3f7d8c6-3f7b-462d-b46a-5f8cd558194b",
+              "Center": "0,0,0",
+              "IsTrigger": false,
+              "Scale": "50,50,50",
+              "Static": false
+            },
+            {
+              "__type": "Sandbox.Rigidbody",
+              "__guid": "6116ccff-2926-4b55-962e-18abff694476",
+              "AngularDamping": 0,
+              "Gravity": false,
+              "LinearDamping": 0,
+              "Locking": {},
+              "MassOverride": 0,
+              "MotionEnabled": true,
+              "RigidbodyFlags": 0,
+              "StartAsleep": false
+            }
+          ]
+        },
+        {
+          "__guid": "13608601-94ab-4c8a-998c-88a9618ce02d",
+          "Flags": 0,
+          "Name": "FatCube (3)",
+          "Position": "247.1035,269.3177,97.04801",
+          "Rotation": "0.00000001786504,-0.000000003440268,0.1196542,0.9928156",
+          "Scale": "1.563289,1.363289,0.5632889",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "4a19d5fd-9c6c-4a4c-878f-59c00760d23b",
+              "BodyGroups": 18446744073709551615,
+              "MaterialOverride": "materials/default.vmat",
+              "Model": "models/dev/box.vmdl",
+              "RenderType": "On",
+              "Tint": "1,0,0.93333,1"
+            },
+            {
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "01be3431-668b-48ef-bc33-3677aeb47984",
+              "Center": "0,0,0",
+              "IsTrigger": false,
+              "Scale": "50,50,50",
+              "Static": false
+            },
+            {
+              "__type": "Sandbox.Rigidbody",
+              "__guid": "f1bb64f2-904e-40ad-ab26-e85c369bd9d7",
+              "AngularDamping": 0,
+              "Gravity": false,
+              "LinearDamping": 0,
+              "Locking": {},
+              "MassOverride": 0,
+              "MotionEnabled": true,
+              "RigidbodyFlags": 0,
+              "StartAsleep": false
+            }
+          ]
+        },
+        {
+          "__guid": "b35e2784-aefc-42f4-89af-1b64a3190e95",
+          "Flags": 0,
+          "Name": "FatCube (2)",
+          "Position": "178.1219,252.4453,67.75579",
+          "Rotation": "0.00000001786504,-0.000000003440268,0.1196542,0.9928156",
+          "Scale": "1.563289,1.363289,0.5632889",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "178aca20-176f-44e6-8d0c-c60f0d6adfb4",
+              "BodyGroups": 18446744073709551615,
+              "MaterialOverride": "materials/default.vmat",
+              "Model": "models/dev/box.vmdl",
+              "RenderType": "On",
+              "Tint": "1,0,0.93333,1"
+            },
+            {
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "948127f4-7756-473d-ae12-ec230bf14c90",
+              "Center": "0,0,0",
+              "IsTrigger": false,
+              "Scale": "50,50,50",
+              "Static": false
+            },
+            {
+              "__type": "Sandbox.Rigidbody",
+              "__guid": "68402b39-1bd3-49e0-b01a-632bd384511a",
+              "AngularDamping": 0,
+              "Gravity": false,
+              "LinearDamping": 0,
+              "Locking": {},
+              "MassOverride": 0,
+              "MotionEnabled": true,
+              "RigidbodyFlags": 0,
+              "StartAsleep": false
+            }
+          ]
+        },
+        {
+          "__guid": "d4dfe4de-3fb6-4f15-bf91-1926848e8b09",
+          "Flags": 0,
+          "Name": "FatCube (1)",
+          "Position": "128.0437,240.1965,39.20246",
+          "Rotation": "0.00000001786504,-0.000000003440268,0.1196542,0.9928156",
+          "Scale": "1.563289,1.363289,0.5632889",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "0418da94-9d32-4062-9ba2-34840ac48a0e",
+              "BodyGroups": 18446744073709551615,
+              "MaterialOverride": "materials/default.vmat",
+              "Model": "models/dev/box.vmdl",
+              "RenderType": "On",
+              "Tint": "1,0,0.93333,1"
+            },
+            {
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "121fa330-a7e3-4e21-8ff3-8969e04491fa",
+              "Center": "0,0,0",
+              "IsTrigger": false,
+              "Scale": "50,50,50",
+              "Static": false
+            },
+            {
+              "__type": "Sandbox.Rigidbody",
+              "__guid": "a8454c9a-5b5a-4431-ad7c-c88777ecea76",
+              "AngularDamping": 0,
+              "Gravity": false,
+              "LinearDamping": 0,
+              "Locking": {},
+              "MassOverride": 0,
+              "MotionEnabled": true,
+              "RigidbodyFlags": 0,
+              "StartAsleep": false
+            }
+          ]
+        },
+        {
+          "__guid": "832e9e4a-1cec-44b5-8114-9045266b7d9a",
+          "Flags": 0,
+          "Name": "FatCube",
+          "Position": "54.74084,222.2672,15.49897",
+          "Rotation": "0.00000001786504,-0.000000003440268,0.1196542,0.9928156",
+          "Scale": "1.563289,1.363289,0.5632889",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "9ace776c-6517-4bd8-aac2-52cae9259409",
+              "BodyGroups": 18446744073709551615,
+              "MaterialOverride": "materials/default.vmat",
+              "Model": "models/dev/box.vmdl",
+              "RenderType": "On",
+              "Tint": "1,0,0.93333,1"
+            },
+            {
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "2210a636-4528-42e2-abad-ff06d817b2a5",
+              "Center": "0,0,0",
+              "IsTrigger": false,
+              "Scale": "50,50,50",
+              "Static": false
+            },
+            {
+              "__type": "Sandbox.Rigidbody",
+              "__guid": "2f2d5ab7-f031-45bb-80a3-118bddcc1a55",
+              "AngularDamping": 0,
+              "Gravity": false,
+              "LinearDamping": 0,
+              "Locking": {},
+              "MassOverride": 0,
+              "MotionEnabled": true,
+              "RigidbodyFlags": 0,
+              "StartAsleep": false
+            }
+          ]
+        },
+        {
           "__guid": "211b118e-6541-483b-ad37-b8db6cc82e7f",
           "Flags": 0,
           "Name": "Sphere",
-          "Position": "116.1443,271.8635,-26.58978",
+          "Position": "370.5669,293.3755,137.6367",
           "Enabled": true,
           "Components": [
             {
@@ -197,18 +397,6 @@
               "IsTrigger": false,
               "Radius": 30,
               "Static": false
-            },
-            {
-              "__type": "Sandbox.Rigidbody",
-              "__guid": "fded554f-4741-4664-a33a-363b34d715b5",
-              "AngularDamping": 0,
-              "Gravity": true,
-              "LinearDamping": 0,
-              "Locking": {},
-              "MassOverride": 0,
-              "MotionEnabled": true,
-              "RigidbodyFlags": 0,
-              "StartAsleep": false
             }
           ]
         }
@@ -267,7 +455,7 @@
             "_type": "gameobject",
             "go": "99462b2d-f345-414a-aff5-b4d5f20eec53"
           },
-          "JumpForce": 400,
+          "JumpForce": 275,
           "MaxForce": 500,
           "RunSpeed": 290,
           "Speed": 160
