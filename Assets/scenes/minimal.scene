@@ -1,5 +1,5 @@
 {
-  "__guid": "08c48855-4b1d-4972-b059-9545e3f468e9",
+  "__guid": "da017acb-b073-49f9-b089-c10f79947deb",
   "GameObjects": [
     {
       "__guid": "bfc59c12-1ed2-4f91-8956-a95a315eac3c",
@@ -32,7 +32,7 @@
           "__guid": "ac1cd84d-3c93-4c14-9225-0a35034356c6",
           "Flags": 0,
           "Name": "Plane",
-          "Position": "10.20098,211.8634,-129.675",
+          "Position": "0,0,0",
           "Scale": "5,5,5",
           "Enabled": true,
           "Components": [
@@ -59,7 +59,7 @@
           "__guid": "ebd85eec-98cc-4c6e-89cb-c7dd41475ee9",
           "Flags": 0,
           "Name": "Cube",
-          "Position": "147.8461,261.6555,-101.1753",
+          "Position": "124.4264,125.4083,15.61428",
           "Rotation": "0.00000001819328,-0.00000000000000008235059,0.3052325,0.952278",
           "Scale": "0.5632889,0.5632889,0.5632889",
           "Enabled": true,
@@ -99,7 +99,7 @@
           "__guid": "51dcdccc-7f64-4477-aa21-5c27a674cf6d",
           "Flags": 0,
           "Name": "Cube (1)",
-          "Position": "167.2427,234.5068,-101.1753",
+          "Position": "143.823,98.25966,15.61428",
           "Rotation": "0.00000001819328,-0.00000000000000008235059,0.3052325,0.952278",
           "Scale": "0.5632889,0.5632889,0.5632889",
           "Enabled": true,
@@ -139,7 +139,7 @@
           "__guid": "ec8734c0-57fd-43ec-a35f-3fd18f73d1d5",
           "Flags": 0,
           "Name": "Cube (2)",
-          "Position": "175.9663,221.62,-71.90073",
+          "Position": "152.5465,85.37285,44.88886",
           "Rotation": "0.00000001819328,-0.00000000000000008235059,0.3052325,0.952278",
           "Scale": "0.5632889,0.5632889,0.5632889",
           "Enabled": true,
@@ -218,7 +218,7 @@
       "__guid": "6acc5811-b56f-43be-9432-945007530285",
       "Flags": 0,
       "Name": "Player",
-      "Position": "-301.8949,145.8898,183.2316",
+      "Position": "-326.8634,-42.49521,183.2316",
       "Tags": "player",
       "Enabled": true,
       "Components": [
@@ -278,14 +278,14 @@
           "__guid": "99462b2d-f345-414a-aff5-b4d5f20eec53",
           "Flags": 0,
           "Name": "Head",
-          "Position": "7.001038,0,62.06306",
+          "Position": "6.467163,0.9340248,60.33524",
           "Enabled": true
         },
         {
           "__guid": "a57bb077-3635-40ca-807b-fc8b249056ea",
           "Flags": 0,
           "Name": "Body",
-          "Position": "1.355652,0,-0.6110382",
+          "Position": "0.8217773,0.9340248,-2.338867",
           "Enabled": true,
           "Components": [
             {
@@ -304,7 +304,7 @@
           "__guid": "313822c2-2b24-46bd-a2cd-91e69d8cd501",
           "Flags": 0,
           "Name": "Camera",
-          "Position": "-73.92059,-28.44726,61.98224",
+          "Position": "-74.45447,-27.51323,60.25439",
           "Enabled": true,
           "Components": [
             {
@@ -372,7 +372,7 @@
             },
             {
               "__type": "CameraMovement",
-              "__guid": "67466bcc-87f2-4356-b9c1-58d2c7ddbdac",
+              "__guid": "89415336-b005-4af5-8b41-149d72011c01",
               "Body": {
                 "_type": "gameobject",
                 "go": "a57bb077-3635-40ca-807b-fc8b249056ea"
@@ -387,8 +387,7 @@
                 "component_id": "eba95c62-b14d-42bd-91fc-c06a94b40546",
                 "go": "6acc5811-b56f-43be-9432-945007530285",
                 "component_type": "PlayerMovement"
-              },
-              "Sensitivity": 0.1
+              }
             }
           ]
         }
