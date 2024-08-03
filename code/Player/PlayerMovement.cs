@@ -63,11 +63,7 @@ public sealed class PlayerMovement : Component
 
 		Rotation PlayerRotation = Head.Transform.Rotation;
 
-		// Define the dictionary mapping input directions to velocity vectors
-		// Order of items defined based on the likelihood of the input being pressed
-		// Source: https://www.reddit.com/r/dataisbeautiful/comments/6mqohs/i_logged_which_keys_i_used_most_often_while_pc/
-		// W: 30.69%, D: 16.17%, A: 13.68%, S: 7.60%
-		// This leads to less checks and iterations being performed
+		// Map the input directions to their respective Vector3 directions
 		Dictionary<string, Vector3> directionMap = new Dictionary<string, Vector3>
 		{
 			{ "Forward", PlayerRotation.Forward },
