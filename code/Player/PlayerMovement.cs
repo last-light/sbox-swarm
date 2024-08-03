@@ -8,7 +8,7 @@ public sealed class PlayerMovement : Component
 	// Once created, can be modified from the s&box inspector window
 	[Property] public float GroundControl { get; set; } = 4.0f;
 	[Property] public float AirControl { get; set; } = 0.1f;
-	[Property] public float MaxForce { get; set; } = 50f;
+	[Property] public float MaxForce { get; set; } = 500f;
 	[Property] public float Speed { get; set; } = 160f;
 	[Property] public float RunSpeed { get; set; } = 290f;
 	[Property] public float CrouchSpeed { get; set; } = 90f;
@@ -36,6 +36,8 @@ public sealed class PlayerMovement : Component
 	{
 		IsCrouching = Input.Down("Duck");
 		IsSprinting = Input.Down("Run");
+		if (Input.Pressed("Jump")) Jump();
+		UpdateAnimations();
 	}
 
 	// Call on every physics update instead of scene update
@@ -43,6 +45,7 @@ public sealed class PlayerMovement : Component
 	{
 		BuildWishVelocity();
 		Move();
+		RotateBody();
 	}
 
 	void BuildWishVelocity()
@@ -117,5 +120,39 @@ public sealed class PlayerMovement : Component
 		{
 			characterController.Velocity = characterController.Velocity.WithZ(0);
 		}
-	} 
+	}
+
+	void Jump()
+	{
+		if(!characterController.IsOnGround) return;
+
+		characterController.Punch(Vector3.Up * JumpForce);
+		citizenAnimationHelper?.TriggerJump();
+	}
+
+	void RotateBody()
+	{
+		if(Body is null) return;
+
+		var targetAngle = new Angles(0, Head.Transform.Rotation.Yaw(), 0).ToRotation();
+		float rotateDifference = Body.Transform.Rotation.Distance(targetAngle);
+
+		if (rotateDifference > 50f || characterController.Velocity.Length > 10f)
+		{
+			Body.Transform.Rotation = Rotation.Lerp(Body.Transform.Rotation, targetAngle, Time.Delta * 7f);
+		}
+	}
+
+	void UpdateAnimations()
+	{
+		if(citizenAnimationHelper is null) return;
+
+		citizenAnimationHelper.WithWishVelocity(WishVelocity);
+		citizenAnimationHelper.WithVelocity(characterController.Velocity);
+		citizenAnimationHelper.AimAngle = Head.Transform.Rotation;
+		citizenAnimationHelper.IsGrounded = characterController.IsOnGround;
+		citizenAnimationHelper.WithLook(Head.Transform.Rotation.Forward, 1f, 0.75f, 0.5f);
+		citizenAnimationHelper.MoveStyle = CitizenAnimationHelper.MoveStyles.Run;
+		citizenAnimationHelper.DuckLevel = IsCrouching ? 1f : 0f;
+	}
 }
