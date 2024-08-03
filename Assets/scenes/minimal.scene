@@ -1,5 +1,6 @@
 {
   "__guid": "da017acb-b073-49f9-b089-c10f79947deb",
+  "__guid": "da017acb-b073-49f9-b089-c10f79947deb",
   "GameObjects": [
     {
       "__guid": "bfc59c12-1ed2-4f91-8956-a95a315eac3c",
@@ -22,11 +23,16 @@
     },
     {
       "__guid": "e49a01ce-79a1-4a1e-b2e1-c6687ee77bb1",
+      "__guid": "e49a01ce-79a1-4a1e-b2e1-c6687ee77bb1",
       "Flags": 0,
       "Name": "Environment",
       "Position": "-126.4292,-187.5311,115.5769",
       "Tags": "solid",
+      "Name": "Environment",
+      "Position": "-126.4292,-187.5311,115.5769",
+      "Tags": "solid",
       "Enabled": true,
+      "Children": [
       "Children": [
         {
           "__guid": "ac1cd84d-3c93-4c14-9225-0a35034356c6",
