@@ -10,6 +10,8 @@ public sealed class CameraMovement : Component
 	[Property] public GameObject Head {get; set;}
 	[Property] public float Distance {get; set;} = 0f;
 
+	[Property] public float Sensitivity {get; set;} = 0.1f;
+
 	//Variables for first person
 	public bool IsFirstPerson => Distance <=0f;
 	private CameraComponent Camera;
@@ -27,8 +29,8 @@ public sealed class CameraMovement : Component
 		//Rotate head based on mouse movement
 		var rotateAngle = Head.Transform.Rotation.Angles();
 		// Value is placeholder (hardcoded sensitivity)
-		rotateAngle.pitch += Input.MouseDelta.y * 0.1f; 
-		rotateAngle.yaw -= Input.MouseDelta.x * 0.1f;
+		rotateAngle.pitch += Input.MouseDelta.y * Sensitivity; 
+		rotateAngle.yaw -= Input.MouseDelta.x * Sensitivity;
 		//Zero because we are not rolling the camera
 		rotateAngle.roll =0f; 
 		//Limit rotation to 90 degrees (so we cannot do 360)
