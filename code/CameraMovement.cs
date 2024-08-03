@@ -52,11 +52,12 @@ public sealed class CameraMovement : Component
 				{
 					camPos = camTrace.EndPosition;
 				}
-				
-				BodyRenderer.Enabled = true;
+				//Enabling render of model if in third person
+				BodyRenderer.RenderType = ModelRenderer.ShadowRenderType.On;
 			}
 			else {
-				BodyRenderer.Enabled = false;
+				//Changing to render shadows only in first person
+				BodyRenderer.RenderType = ModelRenderer.ShadowRenderType.ShadowsOnly;
 			}
 			// If crouching, half the height of the camera, smooth movement
 			if(Player.IsCrouching)
