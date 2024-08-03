@@ -1,5 +1,5 @@
 {
-  "__guid": "325a4042-0696-43dd-a79d-dcc314299ba3",
+  "__guid": "08c48855-4b1d-4972-b059-9545e3f468e9",
   "GameObjects": [
     {
       "__guid": "bfc59c12-1ed2-4f91-8956-a95a315eac3c",
@@ -179,7 +179,7 @@
           "__guid": "211b118e-6541-483b-ad37-b8db6cc82e7f",
           "Flags": 0,
           "Name": "Sphere",
-          "Position": "28.93737,283.8745,-31.15333",
+          "Position": "116.1443,271.8635,-26.58978",
           "Enabled": true,
           "Components": [
             {
@@ -191,12 +191,24 @@
               "Tint": "1,1,1,1"
             },
             {
-              "__type": "Sandbox.BoxCollider",
-              "__guid": "7680f038-16c3-4d0f-9d57-4c1ff01a4199",
+              "__type": "Sandbox.SphereCollider",
+              "__guid": "51add9d5-9d41-4cd6-a488-779ade8e9625",
               "Center": "0,0,0",
               "IsTrigger": false,
-              "Scale": "50,50,50",
+              "Radius": 30,
               "Static": false
+            },
+            {
+              "__type": "Sandbox.Rigidbody",
+              "__guid": "fded554f-4741-4664-a33a-363b34d715b5",
+              "AngularDamping": 0,
+              "Gravity": true,
+              "LinearDamping": 0,
+              "Locking": {},
+              "MassOverride": 0,
+              "MotionEnabled": true,
+              "RigidbodyFlags": 0,
+              "StartAsleep": false
             }
           ]
         }
@@ -221,6 +233,25 @@
           "Radius": 16,
           "StepHeight": 18,
           "UseCollisionRules": false
+        },
+        {
+          "__type": "Sandbox.Citizen.CitizenAnimationHelper",
+          "__guid": "12f47042-fed6-4ba6-814a-0a1ea011af12",
+          "BodyWeight": 1,
+          "EyeSource": {
+            "_type": "gameobject",
+            "go": "99462b2d-f345-414a-aff5-b4d5f20eec53"
+          },
+          "EyesWeight": 1,
+          "HeadWeight": 1,
+          "Height": 1,
+          "LookAtEnabled": false,
+          "Target": {
+            "_type": "component",
+            "component_id": "e0d3fec8-044c-462e-9e44-f2ad2fe13711",
+            "go": "a57bb077-3635-40ca-807b-fc8b249056ea",
+            "component_type": "SkinnedModelRenderer"
+          }
         },
         {
           "__type": "PlayerMovement",
@@ -266,24 +297,6 @@
               "RenderType": "On",
               "Tint": "1,1,1,1",
               "UseAnimGraph": true
-            },
-            {
-              "__type": "Sandbox.Citizen.CitizenAnimationHelper",
-              "__guid": "a6081071-d423-4551-b56e-425bd0a4b37d",
-              "BodyWeight": 1,
-              "EyeSource": {
-                "_type": "gameobject",
-                "go": "99462b2d-f345-414a-aff5-b4d5f20eec53"
-              },
-              "EyesWeight": 1,
-              "HeadWeight": 1,
-              "LookAtEnabled": false,
-              "Target": {
-                "_type": "component",
-                "component_id": "e0d3fec8-044c-462e-9e44-f2ad2fe13711",
-                "go": "a57bb077-3635-40ca-807b-fc8b249056ea",
-                "component_type": "SkinnedModelRenderer"
-              }
             }
           ]
         },
@@ -374,7 +387,8 @@
                 "component_id": "eba95c62-b14d-42bd-91fc-c06a94b40546",
                 "go": "6acc5811-b56f-43be-9432-945007530285",
                 "component_type": "PlayerMovement"
-              }
+              },
+              "Sensitivity": 0.1
             }
           ]
         }
