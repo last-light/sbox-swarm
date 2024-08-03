@@ -52,7 +52,7 @@ public sealed class CameraMovement : Component
 				{
 					camPos = camTrace.EndPosition;
 				}
-				// Enable BodyRenderer
+				
 				BodyRenderer.Enabled = true;
 			}
 			else {
