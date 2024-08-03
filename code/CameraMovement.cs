@@ -6,7 +6,7 @@ public sealed class CameraMovement : Component
 	[Property] public PlayerMovement Player { get; set; }
 	[Property] public GameObject Head { get; set; }
 	[Property] public GameObject Body { get; set; }
-	[Property] public float Distance { get; set; } = 0f;
+	[Property] public float Distance { get; set; } = 150f;
 	[Property] public float Sensitivity { get; set; } = 0.1f;
 
 	// Variables
@@ -17,9 +17,11 @@ public sealed class CameraMovement : Component
 	protected override void OnAwake()
 	{
 		Camera = Components.Get<CameraComponent>();
+		Camera.FieldOfView = 110f;
+
 		BodyRenderer = Body.Components.Get<ModelRenderer>();
 	}
-	// public bool IsThirdPerson => Distance > 0f;
+
 	protected override void OnUpdate()
 	{
 		// Rotate the head based on mouse movement
@@ -56,8 +58,13 @@ public sealed class CameraMovement : Component
 			else {
 				BodyRenderer.Enabled = false;
 			}
+			// If crouching, half the height of the camera, smooth movement
+			if(Player.IsCrouching)
+			{
+				camPos -= Vector3.Up * 25f;
+			}
 
-			// Set the position of the camera to our calculated position
+			// Set the position of the camera to our calculated position over a period of time
 			Camera.Transform.Position = camPos;
 			Camera.Transform.Rotation = eyeAngles.ToRotation();
 		}

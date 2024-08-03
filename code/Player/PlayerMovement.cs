@@ -34,7 +34,7 @@ public sealed class PlayerMovement : Component
 
 	protected override void OnUpdate()
 	{
-		IsCrouching = Input.Down("Duck");
+		UpdateCrouch();
 		IsSprinting = Input.Down("Run");
 		if (Input.Pressed("Jump")) Jump();
 		UpdateAnimations();
@@ -129,6 +129,23 @@ public sealed class PlayerMovement : Component
 		characterController.Punch(Vector3.Up * JumpForce);
 		citizenAnimationHelper?.TriggerJump();
 	}
+
+	void UpdateCrouch()
+    {
+        if(characterController is null) return;
+
+        if(Input.Pressed("Duck") && !IsCrouching)
+        {
+            IsCrouching = true;
+            characterController.Height /= 2f; // Reduce the height of our character controller
+        }
+
+        if(Input.Released("Duck") && IsCrouching)
+        {
+            IsCrouching = false;
+            characterController.Height *= 2f; // Return the height of our character controller to normal
+        }
+    }
 
 	void RotateBody()
 	{
