@@ -155,7 +155,7 @@ public sealed class PlayerMovement : Component
 			//crouch Jump
 			//check if player is in air, if so move player by crouch-tall height
 			//JumpDuck is so we prevent player from infinitely moving off the ground (floating by spamming crouch)
-			if(!characterController.IsOnGround && !JumpDuck)
+			if(!characterController.IsOnGround && !JumpDuck &&!CrouchCheck())
 			{
 				characterController.MoveTo(Transform.Position+= Vector3.Up *(characterController.Height*1.6f - characterController.Height),false);
 				// Transform.ClearInterpolation(); -possibly for networking later
