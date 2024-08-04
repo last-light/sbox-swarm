@@ -1,6 +1,7 @@
 using System.Numerics;
 using Sandbox;
 using Sandbox.Citizen;
+using Sandbox.UI;
 
 public sealed class PlayerMovement : Component
 {
@@ -138,11 +139,9 @@ public sealed class PlayerMovement : Component
 			var headPosHalved = Head.Transform.Position-(Vector3.Up*25f); 
 			//Shooting a ray from halved head position to the head position to check for collision
 			//We do that since head position does not change when crouching, only bounding box and camera position
-			var crouchTrace = Scene.Trace.Ray(headPosHalved, Head.Transform.Position).Run();
-			// Log.Info(crouchTrace.StartPosition);
+			var crouchTrace = Scene.Trace.Ray(headPosHalved, Head.Transform.Position).Size(32).Run();
 			if(crouchTrace.Hit)
 			{
-				Log.Info(crouchTrace.Hit);
 				CrouchStuck=true;
 			}
 			else
@@ -151,7 +150,7 @@ public sealed class PlayerMovement : Component
 			}			
 	}
 
-	async void UpdateCrouch()
+	void UpdateCrouch()
 	{
         if(characterController is null) return;
         if(Input.Pressed("Duck") && !IsCrouching)
@@ -159,6 +158,7 @@ public sealed class PlayerMovement : Component
             IsCrouching = true;
             characterController.Height /= 1.5f; // Reduce the height of our character controller
 			characterController.Radius *= 1.2f;
+			Log.Info(characterController.BoundingBox);
         }
         if(Input.Released("Duck") && IsCrouching)
         {
