@@ -142,7 +142,7 @@ public sealed class PlayerMovement : Component
 			// Log.Info(crouchTrace.StartPosition);
 			if(crouchTrace.Hit)
 			{
-				// Log.Info(crouchTrace.Hit);
+				Log.Info(crouchTrace.Hit);
 				CrouchStuck=true;
 			}
 			else
