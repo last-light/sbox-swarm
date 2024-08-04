@@ -1,0 +1,19 @@
+{
+  "publish": {
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "crouchlightspawntest",
+      "Type": "map",
+      "Org": "local",
+      "Ident": "crouchlightspawntest",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": [],
+      "EditorReferences": [],
+      "Metadata": {
+        "SingleAssetSource": "maps/crouchlightspawntest.vmap"
+      }
+    }
+  }
+}

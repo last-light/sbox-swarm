@@ -5,6 +5,7 @@
       "__guid": "bfc59c12-1ed2-4f91-8956-a95a315eac3c",
       "Flags": 0,
       "Name": "Sun",
+      "Position": "338.0765,-2276.632,568.9373",
       "Rotation": "-0.0729315,0.4822396,0.1305433,0.8631827",
       "Tags": "light_directional,light",
       "Enabled": true,
@@ -24,37 +25,10 @@
       "__guid": "e49a01ce-79a1-4a1e-b2e1-c6687ee77bb1",
       "Flags": 0,
       "Name": "Environment",
-      "Position": "-126.4292,-187.5311,115.5769",
+      "Position": "12.80927,-768.7761,597.954",
       "Tags": "solid",
       "Enabled": true,
       "Children": [
-        {
-          "__guid": "ac1cd84d-3c93-4c14-9225-0a35034356c6",
-          "Flags": 0,
-          "Name": "Plane",
-          "Position": "10.20098,211.8634,-129.675",
-          "Scale": "5,5,5",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "Sandbox.ModelRenderer",
-              "__guid": "fd85b290-6587-43ad-99ca-4e0c5032f464",
-              "BodyGroups": 18446744073709551615,
-              "MaterialOverride": "materials/shine.vmat",
-              "Model": "models/dev/plane.vmdl",
-              "RenderType": "Off",
-              "Tint": "0.39546,0.51163,0.27128,1"
-            },
-            {
-              "__type": "Sandbox.BoxCollider",
-              "__guid": "4a20cf24-2450-406d-b676-823312f2b202",
-              "Center": "0,0,-5",
-              "IsTrigger": false,
-              "Scale": "100,100,10",
-              "Static": false
-            }
-          ]
-        },
         {
           "__guid": "ebd85eec-98cc-4c6e-89cb-c7dd41475ee9",
           "Flags": 0,
@@ -218,7 +192,7 @@
       "__guid": "6acc5811-b56f-43be-9432-945007530285",
       "Flags": 0,
       "Name": "Player",
-      "Position": "-301.8949,145.8898,183.2316",
+      "Position": "-301.8949,-731.5091,290.001",
       "Tags": "player",
       "Enabled": true,
       "Components": [
@@ -228,9 +202,9 @@
           "Acceleration": 10,
           "Bounciness": 0.3,
           "GroundAngle": 45,
-          "Height": 64,
+          "Height": 70,
           "IgnoreLayers": "player",
-          "Radius": 16,
+          "Radius": 20,
           "StepHeight": 18,
           "UseCollisionRules": false
         },
@@ -312,7 +286,7 @@
               "__guid": "9382925b-6117-408d-9949-d5198853c40e",
               "BackgroundColor": "0.33333,0.46275,0.52157,1",
               "ClearFlags": "All",
-              "FieldOfView": 80,
+              "FieldOfView": 90,
               "IsMainCamera": true,
               "Orthographic": false,
               "OrthographicHeight": 1204,
@@ -393,6 +367,39 @@
           ]
         }
       ]
+    },
+    {
+      "__guid": "2b6c163e-0295-46c1-b56a-1bb877e03f27",
+      "Flags": 0,
+      "Name": "Map Loader",
+      "Position": "-494.3954,-3.438507,208.1695",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MapInstance",
+          "__guid": "5f8cbffe-e108-426f-9715-158f245cd683",
+          "__version": 1,
+          "EnableCollision": true,
+          "MapName": "maps/crouchlightspawntest.vmap",
+          "NoOrigin": false,
+          "UseMapFromLaunch": false
+        },
+        {
+          "__type": "MapLoader",
+          "__guid": "f0e08ac5-d2e6-4647-b7b3-f0c26666f95a",
+          "MapInstance": {
+            "_type": "component",
+            "component_id": "5f8cbffe-e108-426f-9715-158f245cd683",
+            "go": "2b6c163e-0295-46c1-b56a-1bb877e03f27",
+            "component_type": "MapInstance"
+          },
+          "Player": {
+            "_type": "gameobject",
+            "go": "6acc5811-b56f-43be-9432-945007530285"
+          }
+        }
+      ],
+      "Children": []
     }
   ],
   "SceneProperties": {

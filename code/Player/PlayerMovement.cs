@@ -23,6 +23,7 @@ public sealed class PlayerMovement : Component
 	public Vector3 WishVelocity = Vector3.Zero;
 	public bool IsCrouching = false;
 	public bool IsSprinting = false;
+	public bool CrouchStuck = false;
 	private CharacterController characterController;
 	private CitizenAnimationHelper citizenAnimationHelper;
 
@@ -38,6 +39,7 @@ public sealed class PlayerMovement : Component
 		IsSprinting = Input.Down("Run");
 		if (Input.Pressed("Jump")) Jump();
 		UpdateAnimations();
+		if (IsCrouching) CrouchCheck();
 	}
 
 	// Call on every physics update instead of scene update
@@ -130,21 +132,43 @@ public sealed class PlayerMovement : Component
 		citizenAnimationHelper?.TriggerJump();
 	}
 
-	void UpdateCrouch()
-    {
-        if(characterController is null) return;
+	void CrouchCheck()
+	{		
+			//Getting the halved position of the head for checking
+			var headPosHalved = Head.Transform.Position-(Vector3.Up*25f); 
+			//Shooting a ray from halved head position to the head position to check for collision
+			//We do that since head position does not change when crouching, only bounding box and camera position
+			var crouchTrace = Scene.Trace.Ray(headPosHalved, Head.Transform.Position).Run();
+			// Log.Info(crouchTrace.StartPosition);
+			if(crouchTrace.Hit)
+			{
+				// Log.Info(crouchTrace.Hit);
+				CrouchStuck=true;
+			}
+			else
+			{
+				CrouchStuck=false;
+			}			
+	}
 
+	async void UpdateCrouch()
+	{
+        if(characterController is null) return;
         if(Input.Pressed("Duck") && !IsCrouching)
         {
             IsCrouching = true;
-            characterController.Height /= 2f; // Reduce the height of our character controller
+            characterController.Height /= 1.5f; // Reduce the height of our character controller
+			characterController.Radius *= 1.2f;
         }
-
         if(Input.Released("Duck") && IsCrouching)
         {
-            IsCrouching = false;
-            characterController.Height *= 2f; // Return the height of our character controller to normal
-        }
+			if(!CrouchStuck)
+			{
+            	IsCrouching = false;
+            	characterController.Height *= 1.5f; // Return the height of our character controller to normal
+				characterController.Radius /= 1.2f;
+			}
+        }			
     }
 
 	void RotateBody()
