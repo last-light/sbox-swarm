@@ -1,6 +1,7 @@
 using System.Numerics;
 using Sandbox;
 using Sandbox.Citizen;
+using Sandbox.UI;
 
 public sealed class PlayerMovement : Component
 {
@@ -153,6 +154,7 @@ public sealed class PlayerMovement : Component
             IsCrouching = true;
             characterController.Height /= 1.5f; // Reduce the height of our character controller
 			characterController.Radius *= 1.2f;
+			Log.Info(characterController.BoundingBox);
         }
 		if (Input.Released("Duck")) {
 			TryUncrouch = true;
