@@ -192,7 +192,7 @@
       "__guid": "6acc5811-b56f-43be-9432-945007530285",
       "Flags": 0,
       "Name": "Player",
-      "Position": "-301.8949,-731.5091,290.001",
+      "Position": "-300,-730,290.001",
       "Tags": "player",
       "Enabled": true,
       "Components": [
@@ -202,7 +202,7 @@
           "Acceleration": 10,
           "Bounciness": 0.3,
           "GroundAngle": 45,
-          "Height": 70,
+          "Height": 72,
           "IgnoreLayers": "player",
           "Radius": 20,
           "StepHeight": 18,
@@ -252,14 +252,14 @@
           "__guid": "99462b2d-f345-414a-aff5-b4d5f20eec53",
           "Flags": 0,
           "Name": "Head",
-          "Position": "7.001038,0,62.06306",
+          "Position": "0,0,59.99899",
           "Enabled": true
         },
         {
           "__guid": "a57bb077-3635-40ca-807b-fc8b249056ea",
           "Flags": 0,
           "Name": "Body",
-          "Position": "1.355652,0,-0.6110382",
+          "Position": "0,0,-0.00100708",
           "Enabled": true,
           "Components": [
             {
@@ -278,7 +278,7 @@
           "__guid": "313822c2-2b24-46bd-a2cd-91e69d8cd501",
           "Flags": 0,
           "Name": "Camera",
-          "Position": "-73.92059,-28.44726,61.98224",
+          "Position": "0,0,59.99899",
           "Enabled": true,
           "Components": [
             {
