@@ -143,7 +143,7 @@ public sealed class PlayerMovement : Component
 			var headPosHalved = Head.Transform.Position-(Vector3.Up*25f); 
 			//Shooting a ray from halved head position to the head position to check for collision
 			//We do that since head position does not change when crouching, only bounding box and camera position
-			return Scene.Trace.Ray(headPosHalved, Head.Transform.Position).Run().Hit;
+			return Scene.Trace.Ray(headPosHalved, Head.Transform.Position).Size(32).Run().Hit;
 	}
 
 	void UpdateCrouch()
@@ -154,7 +154,6 @@ public sealed class PlayerMovement : Component
             IsCrouching = true;
             characterController.Height /= 1.5f; // Reduce the height of our character controller
 			characterController.Radius *= 1.2f;
-			Log.Info(characterController.BoundingBox);
         }
 		if (Input.Released("Duck")) {
 			TryUncrouch = true;
