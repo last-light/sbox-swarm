@@ -139,11 +139,10 @@ public sealed class PlayerMovement : Component
 
 	bool CrouchCheck()
 	{		
-			// Getting the halved position of the head for checking
-			var headPosHalved = Head.Transform.Position - (Vector3.Up*25f);
-			// Shooting a ray from halved head position to the head position to check for collision
-			// We do that since head position does not change when crouching, only bounding box and camera position
-			return Scene.Trace.Ray(headPosHalved, Head.Transform.Position).Size(40).Run().Hit;
+			//Getting the difference between full height and crouchheight
+			var duckHeight= characterController.Height*1.6f - characterController.Height;
+			// Tracing direction from Z Axis to difference in height
+			return characterController.TraceDirection(Vector3.Up*duckHeight).Hit;
 	}
 
 	void UpdateCrouch()

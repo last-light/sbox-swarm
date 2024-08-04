@@ -1,5 +1,5 @@
 {
-  "__guid": "08c48855-4b1d-4972-b059-9545e3f468e9",
+  "__guid": "af83129c-f119-4493-96dd-1bdba59148c9",
   "GameObjects": [
     {
       "__guid": "bfc59c12-1ed2-4f91-8956-a95a315eac3c",
@@ -58,6 +58,46 @@
             {
               "__type": "Sandbox.Rigidbody",
               "__guid": "6fde863f-32ce-4dd2-afca-784b5d3f86f7",
+              "AngularDamping": 0,
+              "Gravity": true,
+              "LinearDamping": 0,
+              "Locking": {},
+              "MassOverride": 0,
+              "MotionEnabled": true,
+              "RigidbodyFlags": 0,
+              "StartAsleep": false
+            }
+          ]
+        },
+        {
+          "__guid": "1293d630-071a-4ff7-b151-c233a80f0eb6",
+          "Flags": 0,
+          "Name": "Cube (3)",
+          "Position": "-310.9264,42.71167,-227.3473",
+          "Rotation": "0.00000001819328,-0.00000000000000008235059,0.3052325,0.952278",
+          "Scale": "0.5632889,0.5632889,0.5632889",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "e60eb24d-80b0-4286-ac5e-646196bc9d82",
+              "BodyGroups": 18446744073709551615,
+              "MaterialOverride": "materials/default.vmat",
+              "Model": "models/dev/box.vmdl",
+              "RenderType": "On",
+              "Tint": "1,0,0.93333,1"
+            },
+            {
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "f3f2f98f-c991-41f7-8a47-fc11c43e994b",
+              "Center": "0,0,0",
+              "IsTrigger": false,
+              "Scale": "50,50,50",
+              "Static": true
+            },
+            {
+              "__type": "Sandbox.Rigidbody",
+              "__guid": "8b9d2a49-b26c-4e09-bede-6feba21ade9c",
               "AngularDamping": 0,
               "Gravity": true,
               "LinearDamping": 0,
