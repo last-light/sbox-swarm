@@ -17,7 +17,7 @@ public sealed class CameraMovement : Component
 	protected override void OnAwake()
 	{
 		Camera = Components.Get<CameraComponent>();
-		Camera.FieldOfView = 110f;
+		Camera.FieldOfView = 90f;
 
 		BodyRenderer = Body.Components.Get<ModelRenderer>();
 	}

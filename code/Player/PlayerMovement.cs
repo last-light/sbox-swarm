@@ -14,6 +14,11 @@ public sealed class PlayerMovement : Component
 	[Property] public float CrouchSpeed { get; set; } = 90f;
 	[Property] public float JumpForce { get; set; } = 400f;
 
+	public bool IsCrouching = false;
+	public bool TryUncrouch = false;
+	public bool IsSprinting = false;
+	public bool CrouchStuck = false;
+
 	// Object References
 	// TODO: Author suggests there is a better way to access these objects than using the public keyword
 	[Property] public GameObject Head { get; set; }
@@ -21,9 +26,6 @@ public sealed class PlayerMovement : Component
 
 	// Member Variables
 	public Vector3 WishVelocity = Vector3.Zero;
-	public bool IsCrouching = false;
-	public bool IsSprinting = false;
-	public bool CrouchStuck = false;
 	private CharacterController characterController;
 	private CitizenAnimationHelper citizenAnimationHelper;
 
@@ -36,10 +38,12 @@ public sealed class PlayerMovement : Component
 	protected override void OnUpdate()
 	{
 		UpdateCrouch();
+
 		IsSprinting = Input.Down("Run");
+
 		if (Input.Pressed("Jump")) Jump();
+
 		UpdateAnimations();
-		if (IsCrouching) CrouchCheck();
 	}
 
 	// Call on every physics update instead of scene update
@@ -132,26 +136,16 @@ public sealed class PlayerMovement : Component
 		citizenAnimationHelper?.TriggerJump();
 	}
 
-	void CrouchCheck()
+	bool CrouchCheck()
 	{		
 			//Getting the halved position of the head for checking
 			var headPosHalved = Head.Transform.Position-(Vector3.Up*25f); 
 			//Shooting a ray from halved head position to the head position to check for collision
 			//We do that since head position does not change when crouching, only bounding box and camera position
-			var crouchTrace = Scene.Trace.Ray(headPosHalved, Head.Transform.Position).Run();
-			// Log.Info(crouchTrace.StartPosition);
-			if(crouchTrace.Hit)
-			{
-				Log.Info(crouchTrace.Hit);
-				CrouchStuck=true;
-			}
-			else
-			{
-				CrouchStuck=false;
-			}			
+			return Scene.Trace.Ray(headPosHalved, Head.Transform.Position).Run().Hit;
 	}
 
-	async void UpdateCrouch()
+	void UpdateCrouch()
 	{
         if(characterController is null) return;
         if(Input.Pressed("Duck") && !IsCrouching)
@@ -160,15 +154,15 @@ public sealed class PlayerMovement : Component
             characterController.Height /= 1.5f; // Reduce the height of our character controller
 			characterController.Radius *= 1.2f;
         }
-        if(Input.Released("Duck") && IsCrouching)
-        {
-			if(!CrouchStuck)
-			{
-            	IsCrouching = false;
-            	characterController.Height *= 1.5f; // Return the height of our character controller to normal
-				characterController.Radius /= 1.2f;
-			}
-        }			
+		if (Input.Released("Duck")) {
+			TryUncrouch = true;
+		}
+		if (TryUncrouch && !CrouchCheck() && IsCrouching) {
+			IsCrouching = false;
+			TryUncrouch = false;
+			characterController.Height *= 1.5f; // Return the height of our character controller to normal
+			characterController.Radius /= 1.2f;
+		}
     }
 
 	void RotateBody()
