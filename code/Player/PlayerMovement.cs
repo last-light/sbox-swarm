@@ -19,6 +19,7 @@ public sealed class PlayerMovement : Component
 	public bool TryUncrouch = false;
 	public bool IsSprinting = false;
 	public bool CrouchStuck = false;
+	public bool JumpDuck = false;
 
 	// Object References
 	// TODO: Author suggests there is a better way to access these objects than using the public keyword
@@ -148,8 +149,18 @@ public sealed class PlayerMovement : Component
 	void UpdateCrouch()
 	{
         if(characterController is null) return;
+		if(characterController.IsOnGround)JumpDuck=false; //Set JumpDuck check as false when on ground			
         if(Input.Pressed("Duck") && !IsCrouching)
         {
+			//crouch Jump
+			//check if player is in air, if so move player by crouch-tall height
+			//JumpDuck is so we prevent player from infinitely moving off the ground (floating by spamming crouch)
+			if(!characterController.IsOnGround && !JumpDuck)
+			{
+				characterController.MoveTo(Transform.Position+= Vector3.Up *(characterController.Height*1.6f - characterController.Height),false);
+				// Transform.ClearInterpolation(); -possibly for networking later
+				JumpDuck=true;
+			}
             IsCrouching = true;
             characterController.Height /= 1.6f; // Reduce the height of our character controller
 			// characterController.Radius *= 1.2f;

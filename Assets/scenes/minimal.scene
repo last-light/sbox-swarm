@@ -150,6 +150,46 @@
           ]
         },
         {
+          "__guid": "abbb2016-27dc-42ed-9555-c2d06879d342",
+          "Flags": 0,
+          "Name": "Cube (4)",
+          "Position": "-536.0408,-272.6342,-296.6265",
+          "Rotation": "0.00000001757336,0.000000004708767,0.04836427,0.99883",
+          "Scale": "0.5632889,0.5632889,0.5632889",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "64629996-536f-4b0a-9433-42a7d4fa90e0",
+              "BodyGroups": 18446744073709551615,
+              "MaterialOverride": "materials/default.vmat",
+              "Model": "models/dev/box.vmdl",
+              "RenderType": "On",
+              "Tint": "1,0,0.93333,1"
+            },
+            {
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "4ef1462c-8f6e-4a94-9e9d-7045fed4d3dd",
+              "Center": "0,0,0",
+              "IsTrigger": false,
+              "Scale": "50,50,50",
+              "Static": true
+            },
+            {
+              "__type": "Sandbox.Rigidbody",
+              "__guid": "892d0971-5e2b-4f94-aee3-0aaeb6f08e47",
+              "AngularDamping": 0,
+              "Gravity": true,
+              "LinearDamping": 0,
+              "Locking": {},
+              "MassOverride": 0,
+              "MotionEnabled": true,
+              "RigidbodyFlags": 0,
+              "StartAsleep": false
+            }
+          ]
+        },
+        {
           "__guid": "ec8734c0-57fd-43ec-a35f-3fd18f73d1d5",
           "Flags": 0,
           "Name": "Cube (2)",
@@ -281,7 +321,7 @@
             "_type": "gameobject",
             "go": "99462b2d-f345-414a-aff5-b4d5f20eec53"
           },
-          "JumpForce": 400,
+          "JumpForce": 300,
           "MaxForce": 500,
           "RunSpeed": 290,
           "Speed": 160
