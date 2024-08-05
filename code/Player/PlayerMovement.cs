@@ -15,12 +15,17 @@ public sealed class PlayerMovement : Component
 	[Property] public float CrouchSpeed { get; set; } = 90f;
 	[Property] public float JumpForce { get; set; } = 400f;
 
-	[Property] public bool IsCrouching = false;
-	[Property] public bool TryUncrouch = false;
+ 	public bool IsCrouching = false;
+ 	public bool TryUncrouch = false;
 	public bool IsSprinting = false;
 	public bool CrouchStuck = false;
 	public bool JumpDuck = false;
-	public float WishHeight = 72f;
+
+	// adding those here since when we make different classes we can change these easily
+	public float FullHeight = 72f;
+	public float CrouchHeight = 45f; 
+	//setting WishHeight initially as tall height
+	public float WishHeight = 72f; 
 
 	// Object References
 	// TODO: Author suggests there is a better way to access these objects than using the public keyword
@@ -44,7 +49,7 @@ public sealed class PlayerMovement : Component
 
 		IsSprinting = Input.Down("Run");
 
-		if (Input.Down("Jump")) Jump();
+		if (Input.Pressed("Jump")) Jump();
 
 		UpdateAnimations();
 	}
@@ -142,7 +147,7 @@ public sealed class PlayerMovement : Component
 	bool CrouchCheck()
 	{		
 			//Getting the difference between full height and crouchheight
-			var duckHeight= characterController.Height*1.6f - characterController.Height;
+			var duckHeight= FullHeight - CrouchHeight;
 			// Tracing direction from Z Axis to difference in height
 			return characterController.TraceDirection(Vector3.Up*duckHeight).Hit;
 	}
@@ -150,23 +155,25 @@ public sealed class PlayerMovement : Component
 	void UpdateCrouch()
 	{
         if(characterController is null) return;
-		characterController.Height=characterController.Height.LerpTo(WishHeight, 15f * Time.Delta);		
-		if(characterController.IsOnGround)JumpDuck=false; //Set JumpDuck check as false when on ground			
+		//Linear interpolation of crouch Game Controller height (makes box smaller smoother)
+		characterController.Height=characterController.Height.LerpTo(WishHeight, 15f * Time.Delta);
+		//Set JumpDuck check as false when on ground		
+		if(characterController.IsOnGround)JumpDuck=false; 		
         if(Input.Pressed("Duck") && !IsCrouching)
         {
 			//crouch Jump
 			//check if player is in air, if so move player by crouch-tall height
 			//JumpDuck is so we prevent player from infinitely moving off the ground (floating by spamming crouch)
-			if(!characterController.IsOnGround &&!CrouchCheck())
+			if(!characterController.IsOnGround &&!CrouchCheck() && !JumpDuck)
 			{
-				characterController.MoveTo(Transform.Position+= Vector3.Up *(characterController.Height*1.6f - characterController.Height),false);
+				characterController.MoveTo(Transform.Position+= Vector3.Up *(FullHeight - CrouchHeight),false);
 				// Transform.ClearInterpolation(); -possibly for networking later
 				JumpDuck=true;
 				
 			}
             IsCrouching = true;
 			TryUncrouch = false; //To do - look for better ways to handle race condition
-            WishHeight=45f; // Reduce the height of our character controller
+            WishHeight=CrouchHeight; // Reduce the height of our character controller
 			// characterController.Radius *= 1.2f;
         }
 		if (Input.Released("Duck")) {
@@ -175,7 +182,7 @@ public sealed class PlayerMovement : Component
 		if (TryUncrouch && !CrouchCheck() && IsCrouching) {
 			IsCrouching = false;
 			TryUncrouch = false;
-			WishHeight=75f; // Return the height of our character controller to normal
+			WishHeight=FullHeight; // Return the height of our character controller to normal
 			// characterController.Radius /= 1.2f;
 		}
     }
